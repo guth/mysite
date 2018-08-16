@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+Hello {{user}}, you have solved {{numSolves}} problem{{numSolves|pluralize}}.
+<br/>
+{% for submission in acSubmissions %}
+    <br/>
+    <a href="{% url 'coderunner:problemDetailView' submission.problem %}">
+        {{submission.problem}}
+    </a>
+{% endfor %}
+{% endblock %}

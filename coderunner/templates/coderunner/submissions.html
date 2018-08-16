@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for s in submissions %}
+    [{{s.id}}]
+    <a href="{% url 'coderunner:problemDetailView' s.problem.name %}?sid={{s.id}}">
+        {{s.problem.name}}
+    </a>:
+    <span class="{{s.result}}">{{s.result}}</span>
+    in {{s.language}} on {{s.submissionDate}}
+    <br/>
+{% empty %}
+    You don't have any submissions!
+{% endfor %}
+
+{% endblock %}

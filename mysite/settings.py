@@ -32,8 +32,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'spojtools.apps.SpojtoolsConfig',
     'polls.apps.PollsConfig',
+    'spojtools.apps.SpojtoolsConfig',
+    # 'coderunner.apps.CoderunnerConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

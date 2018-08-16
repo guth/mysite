@@ -3,36 +3,36 @@
 <!doctype html>
 <html>
 <head>
-	<title>SPOJ Compare Tool</title>
-	<link rel=stylesheet type=text/css href="{% static 'spojtools/style.css' %}">
+    <title>SPOJ Compare Tool</title>
+    <link rel=stylesheet type=text/css href="{% static 'spojtools/style.css' %}">
 </head>
 <body>
-	<h1>
-		Comparing
-		<a href="http://www.spoj.com/users/{{ user1 }}/">{{ user1 }}</a>
-		and
-		<a href="http://www.spoj.com/users/{{ user2 }}/">{{ user2 }}</a>
-	</h1>
+    <h1>
+        Comparing
+        <a href="http://www.spoj.com/users/{{ user1 }}/">{{ user1 }}</a>
+        and
+        <a href="http://www.spoj.com/users/{{ user2 }}/">{{ user2 }}</a>
+    </h1>
 
-	<div class='user'>
-		{{ user1 }} has solved {{ list1|length }} problem{{ list1|length|pluralize }}: 
-		{% for p in list1 %}
-			<a href="http://www.spoj.com/problems/{{ p }}/">{{ p }}</a>,  
-		{% endfor %}
-	</div>
-	<br/>
-	<div class='user'>
-		{{ user2 }} has solved {{ list2|length }} problem{{ list2|length|pluralize }}: 
-		{% for p in list2 %}
-			<a href="http://www.spoj.com/problems/{{ p }}/">{{ p }}</a>, 
-		{% endfor %}
-	</div>
-	<br/>
-	<div class='both'>
-		Both have solved {{ bothList|length }} problem{{ bothList|length|pluralize }}:
-		{% for p in bothList %}
-			<a href="http://www.spoj.com/problems/{{ p }}/">{{ p }}</a>, 
-		{% endfor %}
-	</div>
+    <div class='user'>
+        {{ user1 }} has solved {{ list1|length }} problem{{ list1|length|pluralize }}: 
+        {% for p in list1 %}
+            <a href="http://www.spoj.com/problems/{{ p }}/">{{ p }}</a>,  
+        {% endfor %}
+    </div>
+    <br/>
+    <div class='user'>
+        {{ user2 }} has solved {{ list2|length }} problem{{ list2|length|pluralize }}: 
+        {% for p in list2 %}
+            <a href="http://www.spoj.com/problems/{{ p }}/">{{ p }}</a>, 
+        {% endfor %}
+    </div>
+    <br/>
+    <div class='both'>
+        Both have solved {{ bothList|length }} problem{{ bothList|length|pluralize }}:
+        {% for p in bothList %}
+            <a href="http://www.spoj.com/problems/{{ p }}/">{{ p }}</a>, 
+        {% endfor %}
+    </div>
 </body>
 </html>

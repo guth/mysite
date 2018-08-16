@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Programming Exercises</title>
+    {% load static %}
+    <link type="text/css" rel="stylesheet" href="{% static 'coderunner/bootstrap/bootstrap.min.css' %}" />
+    <link type="text/css" rel="stylesheet" href="{% static 'coderunner/prog.css' %}" />
+</head>
+<body>
+    <div class="row-fluid">
+        <div class="span12">
+            <h1>
+                <a href="{% url mainView %}">Programming Exercises</a>
+            </h1>
+            <br/>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span2">
+            {% if user.is_authenticated %}
+                Welcome, {{user.username}} <br/>
+                <a href="{% url 'coderunner:logoutView' %}">Logout</a> <br/>
+                <a href="{% url 'coderunner:accountView' %}">My Account</a>
+            {% endif %}
+
+            {% if not user.is_authenticated %}
+                <form id="loginForm" method="post" action="{% url 'coderunner:loginView' %}">
+                    {% csrf_token %}
+                    Username: <br/>
+                    <input type="text" name="username"/>
+                    Password: </br>
+                    <input type="password" name="password" />
+                    <input type="submit" value="Login" />
+                </form>
+                {% if messages %}
+                    {% for message in messages %}
+                        <span class="error">{{ message }}</span>
+                        <br/>
+                    {% endfor %}
+                {% endif %}
+                <a href="{% url 'coderunner:signupView' %}">Signup</a>
+            {% endif %}
+            <br/>
+            <a href="{% url 'coderunner:submissionsView' %}">View submissions</a>
+            <a href="{% url 'coderunner:allProblemsView' %}">View all problems</a>
+        </div>
+
+        <div class="span10">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    
+</body>
+</html>

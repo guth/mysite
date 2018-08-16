@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+There are {{count}} problems available.
+<br/>
+<br/>
+{% for problem in problems %}
+    <a href="{% url 'coderunner:problemDetailView' problem.name %}">{{problem.name}}</a>: <u>{{problem.description}}</u>
+    {% if problem.name in solvedProblems %}
+        <span class="correct">[solved]</span>
+    {% endif %}
+    <br/>
+    {{problem.problemStatement}}
+    <br/>
+    <br/>
+{% endfor %}
+
+{% endblock %}

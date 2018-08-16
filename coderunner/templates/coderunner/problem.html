@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<link type="text/css" rel="stylesheet" href="{% static 'coderunner/codemirror/codemirror.css' %}" />
+<!-- <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
+<script type="text/javascript" src="{% static 'coderunner/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'coderunner/jquery.cookie.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'coderunner/codemirror/codemirror.js' %}"></script>
+<script type="text/javascript" src="{% static 'coderunner/codemirror/mode/clike/clike.js' %}"></script>
+<script type="text/javascript" src="{% static 'coderunner/codemirror/mode/python/python.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'coderunner/submission.js' %}"></script>
+
+<script type="text/javascript">
+    var problemName = '{{problem.name}}';
+    sourceDict[JAVA_STR] = '{{ sourceDict.java|escapejs }}';
+    sourceDict[PYTHON_STR] = '{{ sourceDict.py|escapejs }}';
+</script>
+
+<h2>Problem Name: {{problem.name}}</h2>
+<br/>
+
+<b>Description: {{problem.description}}</b>
+<br/>
+
+Problem Statement: {{problem.problemStatement}}
+<br/>
+<br/>
+<form id="inputForm" method="post">
+    <select id="languageSelector" name="language">
+        <option value="Java">Java 6 (1.6.0_24)</option>
+        <option value="Python">Python (2.7.3)</option>
+    </select>
+    <br/>
+    <textarea id="editor" name="editor"></textarea>
+    <br/>
+    <input id="submit" type="submit" value="Submit" />
+</form>
+
+<div id="result">
+    Result will go here.
+</div>
+{% endblock %}
